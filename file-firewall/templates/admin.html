@@ -1,0 +1,36 @@
+<!-- templates/admin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin: Contact Cybersecurity Team</title>
+</head>
+<body>
+  <!-- Banner -->
+  <img src="{{ url_for('static', filename='banner.png') }}" alt="Banner" width="600"><br><br>
+
+  <h2>Admin Mode: Restore Evacuated File</h2>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul>
+        {% for category, message in messages %}
+          <li style="color: red;">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <form method="POST">
+    <label>Admin Password:</label><br>
+    <input type="password" name="admin_password" required><br><br>
+    <button type="submit">Restore File</button>
+  </form>
+
+  <br>
+  <a href="{{ url_for('index') }}">
+    <button>Back to Home</button>
+  </a>
+</body>
+</html>
+

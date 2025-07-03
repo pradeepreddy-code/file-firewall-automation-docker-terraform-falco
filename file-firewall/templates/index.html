@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secure File Firewall</title>
+</head>
+<body>
+  <!-- Banner Image -->
+  <img src="{{ url_for('static', filename='banner.png') }}" alt="Banner" width="600"><br><br>
+
+  <h2>Enter Access Password & MFA</h2>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul>
+        {% for category, message in messages %}
+          <li style="color: red;">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <form method="POST">
+    <label for="password">Password:</label><br>
+    <input type="password" name="password" id="password" required><br><br>
+
+    <label for="mfa">MFA Code:</label><br>
+    <input type="text" name="mfa" id="mfa" required><br><br>
+
+    <button type="submit">Access File</button>
+  </form>
+
+  <br>
+  <!-- Contact Cybersecurity Team button -->
+  <a href="{{ url_for('admin') }}">
+    <button>Contact Cybersecurity Team</button>
+  </a>
+</body>
+</html>
+
